@@ -41,16 +41,19 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+      transition: Transition.cupertino
     ),
     GetPage(
       name: _Paths.ONBOARDING,
       page: () => const OnboardingView(),
       binding: OnboardingBinding(),
+      transition: Transition.cupertinoDialog
     ),
     GetPage(
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
       binding: RegisterBinding(),
+      transition: Transition.cupertinoDialog
     ),
     GetPage(
       name: _Paths.DASHBOARD,

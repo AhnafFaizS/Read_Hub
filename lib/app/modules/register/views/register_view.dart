@@ -16,47 +16,56 @@ class RegisterView extends GetView<RegisterController> {
     const Color buttonColor = Color(0xFF5000CA);
     const Color backgroundInput = Color(0xFFF5F5F5);
 
+    // Font Size
+    double heading = 35.0;
+    double textField = 18.0;
+    double textButton = 20.0;
+
+    // Size
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
         body:SingleChildScrollView(
           child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Form(
-              key: controller.formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Image.asset(
-                      'assets/images/splash/gambar_atas.png',
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
+            width: width,
+            height: height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Image.asset(
+                    'assets/images/splash/gambar_atas.png',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                   ),
+                ),
 
-                  SizedBox(
+                SizedBox(
+                  child: Form(
+                    key: controller.formKey,
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 30),
+                          padding: const EdgeInsets.symmetric(vertical: 20),
                           child: AutoSizeText(
                             'Register Here!',
                             style: GoogleFonts.holtwoodOneSc(
                               color: buttonColor,
-                              fontSize: 35.0,
+                              fontSize: heading,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
                         ),
 
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                          padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
                           child: TextFormField(
                             controller: controller.usernameController,
                             style: GoogleFonts.inter(
-                                fontSize: 20,
+                                fontSize: textField,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black
                             ),
@@ -66,7 +75,7 @@ class RegisterView extends GetView<RegisterController> {
                               prefixIcon: const Icon(Icons.person),
                               hintText: 'Username',
                               hintStyle: GoogleFonts.inter(
-                                  fontSize: 20,
+                                  fontSize: textField,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black
                               ),
@@ -86,11 +95,11 @@ class RegisterView extends GetView<RegisterController> {
                         ),
 
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                          padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
                           child: TextFormField(
                             controller: controller.emailController,
                             style: GoogleFonts.inter(
-                                fontSize: 20,
+                                fontSize: textField,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black
                             ),
@@ -100,7 +109,7 @@ class RegisterView extends GetView<RegisterController> {
                               prefixIcon: const Icon(Icons.email),
                               hintText: 'Email',
                               hintStyle: GoogleFonts.inter(
-                                  fontSize: 20,
+                                  fontSize: textField,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.black
                               ),
@@ -124,13 +133,13 @@ class RegisterView extends GetView<RegisterController> {
                         ),
 
                         Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                            padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
                             child: Obx(()=>
                                 TextFormField(
                                   controller: controller.passwordController,
                                   obscureText: controller.isPasswordHidden.value,
                                   style: GoogleFonts.inter(
-                                      fontSize: 18,
+                                      fontSize: textField,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black
                                   ),
@@ -152,7 +161,7 @@ class RegisterView extends GetView<RegisterController> {
                                     ),
                                     hintText: 'Password',
                                     hintStyle: GoogleFonts.inter(
-                                        fontSize: 20,
+                                        fontSize: textField,
                                         fontWeight: FontWeight.w600,
                                         color: Colors.black
                                     ),
@@ -193,7 +202,7 @@ class RegisterView extends GetView<RegisterController> {
                                         child: Text(
                                           "Register",
                                           style: GoogleFonts.inter(
-                                              fontSize: 20,
+                                              fontSize: textButton,
                                               fontWeight: FontWeight.w700,
                                               color: Colors.white),
                                         )
@@ -219,7 +228,7 @@ class RegisterView extends GetView<RegisterController> {
                                       ),
                                       TextButton(
                                         onPressed: (){
-                                          Get.to(Get.toNamed(Routes.LOGIN), transition: Transition.fadeIn);
+                                          Get.offAllNamed(Routes.LOGIN);
                                         },
                                         child: FittedBox(
                                           child: Text('Login',
@@ -239,17 +248,17 @@ class RegisterView extends GetView<RegisterController> {
                       ],
                     ),
                   ),
+                ),
 
-                  Flexible(
-                    flex: 1,
-                    child: Image.asset(
-                      'assets/images/splash/gambar_bawah.png',
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
+                Flexible(
+                  flex: 1,
+                  child: Image.asset(
+                    'assets/images/splash/gambar_bawah.png',
+                    fit: BoxFit.cover,
+                    width: double.infinity,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

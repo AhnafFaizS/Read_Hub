@@ -36,14 +36,23 @@ class SplashView extends GetView<SplashController> {
                     width: double.infinity,
                   ),
                 ),
-                Image.asset(
-                    'assets/images/splash/logo_readhub.png'
-                ),
 
-                const CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey,
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF5000CA)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: Image.asset(
+                          'assets/images/splash/logo_readhub.png'
+                      ),
+                    ),
+                    const CircularProgressIndicator(
+                      color: Colors.black,
+                      backgroundColor: Colors.grey,
+                      valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF5000CA)),
+                    ),
+                  ],
                 ),
 
                 Flexible(

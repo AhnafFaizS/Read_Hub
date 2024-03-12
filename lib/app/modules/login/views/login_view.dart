@@ -17,13 +17,18 @@ class LoginView extends GetView<LoginController> {
     const Color buttonColor = Color(0xFF5000CA);
     const Color backgroundInput = Color(0xFFF5F5F5);
 
-    // Variabel menampung lebar dan tinggi
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    // Font Size
+    double heading = 35.0;
+    double textField = 18.0;
+    double textButton = 20.0;
+
+    // Size
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: width,
           height: height,
           child: Form(
@@ -50,7 +55,7 @@ class LoginView extends GetView<LoginController> {
                           'Login Here!',
                           style: GoogleFonts.holtwoodOneSc(
                             color: buttonColor,
-                            fontSize: 30.0,
+                            fontSize: heading,
                             fontWeight: FontWeight.w800,
                           ),
                         ),
@@ -61,11 +66,11 @@ class LoginView extends GetView<LoginController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                              padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
                               child: TextFormField(
                                 style: GoogleFonts.inter(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
+                                    fontSize: textField,
+                                    fontWeight: FontWeight.w700,
                                     color: Colors.black
                                 ),
                                controller: controller.emailController,
@@ -75,15 +80,15 @@ class LoginView extends GetView<LoginController> {
                                   prefixIcon: const Icon(Icons.email),
                                   hintText: 'Email',
                                   hintStyle: GoogleFonts.inter(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black
+                                      fontSize: textField,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.grey
                                   ),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 15.0, horizontal: 20.0),
+                                      vertical: 16.0, horizontal: 20.0),
                                 ),
                                 validator: (value){
                                   if (value!.isEmpty){
@@ -106,12 +111,12 @@ class LoginView extends GetView<LoginController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+                                padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
                                 child: Obx(()=>
                                     TextFormField(
                                       style: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
+                                          fontSize: textField,
+                                          fontWeight: FontWeight.w700,
                                           color: Colors.black
                                       ),
                                       controller: controller.passwordController,
@@ -134,19 +139,33 @@ class LoginView extends GetView<LoginController> {
                                         ),
                                         hintText: 'Password',
                                         hintStyle: GoogleFonts.inter(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black,
+                                            fontSize: textField,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.grey
                                         ),
                                         border: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(10),
                                         ),
                                         contentPadding: const EdgeInsets.symmetric(
-                                            vertical: 15.0, horizontal: 20.0),
+                                            vertical: 16.0, horizontal: 20.0),
                                       ),
-                                      validator: (value){
-                                        if (value!.isEmpty){
-                                          return 'Password tidak boleh kosong!';
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please input password';
+                                        } else if (value.length < 8){
+                                          return 'Panjang password harus lebih dari 8';
+                                        }
+                                        // Validasi setidaknya satu huruf besar
+                                        else if (!value.contains(RegExp(r'[A-Z]'))) {
+                                          return 'Password harus mengandung satu huruf besar';
+                                        }
+                                        // Validasi setidaknya satu karakter khusus
+                                        else if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                                          return 'Password harus mengandung satu karakter khusus';
+                                        }
+                                        // Validasi setidaknya satu angka
+                                        else if (!value.contains(RegExp(r'[0-9]'))) {
+                                          return 'Password harus mengandung minimal 1 angka';
                                         }
                                         return null;
                                       },
@@ -178,7 +197,7 @@ class LoginView extends GetView<LoginController> {
                                       child: Text(
                                         "Login",
                                         style: GoogleFonts.inter(
-                                            fontSize: 20,
+                                            fontSize: textButton,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.white),
                                       )
@@ -204,7 +223,7 @@ class LoginView extends GetView<LoginController> {
                                     ),
                                     TextButton(
                                       onPressed: (){
-                                        Get.to( Get.toNamed(Routes.REGISTER), transition: Transition.fadeIn);
+                                        Get.offAllNamed(Routes.REGISTER);
                                       },
                                       child: FittedBox(
                                         child: Text('Register',

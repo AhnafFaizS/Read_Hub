@@ -44,7 +44,7 @@ class CustomPopulerBuku extends StatelessWidget {
 
     double totalHeight = ((items.length / kartuPerBaris) * (tinggiKartu + spacingVertikal)) + spacingVertikal;
      return Container(
-       height: totalHeight,
+       height: MediaQuery.of(context).size.height * 0.5,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,

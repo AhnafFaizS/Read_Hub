@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart' as dio;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -61,8 +60,9 @@ class LoginController extends GetxController {
           String username =  StorageProvider.read(StorageKey.username);
           _showMyDialog(
                   (){
-                Get.to(Get.offAllNamed(Routes.DASHBOARD), transition: Transition.cupertino);
+                Get.offAllNamed(Routes.DASHBOARD);
               },
+              Icons.check_circle,
               "Login Berhasil",
               "Selamat Datang Kembali $username",
               "Lanjut");
@@ -71,6 +71,7 @@ class LoginController extends GetxController {
                   (){
                 Navigator.pop(Get.context!, 'OK');
               },
+              Icons.alarm_rounded,
               "Pemberitahuan",
               "Login Gagal, Coba kembali masuk dengan akun anda",
               "Ok"
@@ -86,6 +87,7 @@ class LoginController extends GetxController {
                   (){
                 Navigator.pop(Get.context!, 'OK');
               },
+              Icons.alarm_rounded,
               "Pemberitahuan",
               "${e.response?.data['message']}",
               "Ok"
@@ -96,6 +98,7 @@ class LoginController extends GetxController {
               (){
             Navigator.pop(Get.context!, 'OK');
           },
+          Icons.alarm_rounded,
           "Pemberitahuan",
           e.message ?? "",
           "OK",
@@ -107,6 +110,7 @@ class LoginController extends GetxController {
             (){
           Navigator.pop(Get.context!, 'OK');
         },
+        Icons.alarm_rounded,
         "Error",
         e.toString(),
         "OK",
@@ -114,18 +118,23 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> _showMyDialog(final onPressed, String judul, String deskripsi, String nameButton) async {
+  Future<void> _showMyDialog(final onPressed, final IconData icons, String judul, String deskripsi, String nameButton) async {
     return showDialog<void>(
       context: Get.context!,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
+          icon: Icon(
+            icons,
+            color: Colors.white,
+            size: 50,
+          ),
           backgroundColor: const Color(0xFF5000CA),
           title: Text(
             'ReadHub App',
-            style: GoogleFonts.inriaSans(
-              fontWeight: FontWeight.w900,
-              fontSize: 20.0,
+            style: GoogleFonts.inter(
+              fontWeight: FontWeight.w800,
+              fontSize: 16.0,
               color: const Color(0xFFFFFFFF),
             ),
           ),
@@ -134,39 +143,47 @@ class LoginController extends GetxController {
               children: <Widget>[
                 Text(
                   judul,
-                  style: GoogleFonts.inriaSans(
-                      fontWeight: FontWeight.w500,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
                       fontSize: 18.0
                   ),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 Text(
                   deskripsi,
-                  style: GoogleFonts.inriaSans(
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
-                      fontSize: 18.0
+                      fontSize: 14.0
                   ),
                 ),
               ],
             ),
           ),
           actions: <Widget>[
-            TextButton(
-              autofocus: true,
-              style: TextButton.styleFrom(
-                backgroundColor: const Color(0xFFF5F5F5),
-                animationDuration: Duration(milliseconds: 300),
-              ),
-              child: Text(
-                nameButton,
-                style: GoogleFonts.inriaSans(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w800,
-                  color: const Color(0xFF5000CA),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                autofocus: true,
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color(0xFFF5F5F5),
+                  animationDuration: const Duration(milliseconds: 300),
+                ),
+                onPressed: onPressed,
+                child: Text(
+                  nameButton,
+                  style: GoogleFonts.poppins(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w800,
+                    color: const Color(0xFF5000CA),
+                  ),
                 ),
               ),
-              onPressed: onPressed,
             ),
           ],
         );

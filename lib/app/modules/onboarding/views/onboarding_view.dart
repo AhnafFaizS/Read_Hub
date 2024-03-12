@@ -16,22 +16,25 @@ class OnboardingView extends GetView<OnboardingController> {
 
     return Scaffold(
 
-      body: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                flex: 1,
-                child: Image.asset(
-                  'assets/images/splash/gambar_atas.png',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Image.asset(
+                'assets/images/splash/gambar_atas.png',
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
+            ),
 
-              SizedBox(
+            SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
                         'assets/images/splash/logo_readhub.png'
@@ -51,28 +54,25 @@ class OnboardingView extends GetView<OnboardingController> {
                       ),
                     ),
 
-                    Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
-                        child: Center(
-                          child: AutoSizeText(
-                            '"READ HUB" bisa diartikan sebagai "pusat membaca" '
-                                'dalam bahasa Inggris. "READ" mencerminkan aksi membaca, '
-                                'sedangkan "HUB" menunjukkan pusat atau tempat kumpulan.',
-                            style: GoogleFonts.holtwoodOneSc(
-                              color: textColor,
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            minFontSize: 12.0,
-                            maxFontSize: 16.0,
-                            maxLines: 3,
-                            textAlign: TextAlign.center,
-                          ),
-                        )
+                    Center(
+                      child: AutoSizeText(
+                        '"READ HUB" bisa diartikan sebagai "pusat membaca" '
+                            'dalam bahasa Inggris. "READ" mencerminkan aksi membaca, '
+                            'sedangkan "HUB" menunjukkan pusat atau tempat kumpulan.',
+                        style: GoogleFonts.holtwoodOneSc(
+                          color: textColor,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        minFontSize: 10.0,
+                        maxFontSize: 12.0,
+                        maxLines: 5,
+                        textAlign: TextAlign.center,
+                      ),
                     ),
 
                     Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
+                        padding: const EdgeInsets.symmetric(vertical: 40),
                         child: Column(
                           children: [
                             SizedBox(
@@ -122,17 +122,17 @@ class OnboardingView extends GetView<OnboardingController> {
                   ],
                 ),
               ),
+            ),
 
-              Flexible(
-                flex: 1,
-                child: Image.asset(
-                  'assets/images/splash/gambar_bawah.png',
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
+            Flexible(
+              flex: 1,
+              child: Image.asset(
+                'assets/images/splash/gambar_bawah.png',
+                fit: BoxFit.cover,
+                width: double.infinity,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       )
     );
