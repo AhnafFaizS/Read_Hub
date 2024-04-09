@@ -79,7 +79,7 @@ class RegisterController extends GetxController {
               },
               Icons.alarm_rounded,
               "Pemberitahuan",
-              "${e.response?.data?['message']}",
+              "${e.response?.data?['Message']}",
               "Ok"
           );
         }

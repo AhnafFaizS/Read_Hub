@@ -15,12 +15,15 @@ class CustomFitur extends StatelessWidget {
     CardItem(
       imageURl: "assets/images/fitur/logo1.png",
       judulBuku: "Book",
-      onTap: ()=> Get.toNamed(Routes.LIBRARY),
+      onTap: (){
+
+      },
     ),
     CardItem(
       imageURl: "assets/images/fitur/logo2.png",
       judulBuku: "Kategori",
-      onTap: ()=> Get.toNamed(Routes.PROFILE),
+      onTap: () {
+      },
     ),
     CardItem(
       imageURl: "assets/images/fitur/logo3.png",
@@ -30,7 +33,7 @@ class CustomFitur extends StatelessWidget {
     CardItem(
       imageURl: "assets/images/fitur/logo4.png",
       judulBuku: "History",
-      onTap: ()=> Get.toNamed(Routes.LIBRARY),
+      onTap: ()=> Get.toNamed(Routes.HISTORYPEMINJAMAN),
     )
   ];
 
@@ -41,7 +44,7 @@ class CustomFitur extends StatelessWidget {
       width: width,
       height: 95,
       child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
           crossAxisSpacing: 10,
           childAspectRatio: 1 / 1,
@@ -75,7 +78,7 @@ class CustomFitur extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: AspectRatio(
-                  aspectRatio: 1 / 1,
+                  aspectRatio: 3 / 3,
                   child: Image.asset(
                     items.imageURl,
                     fit: BoxFit.fill,

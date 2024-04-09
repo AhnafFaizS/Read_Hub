@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,13 +19,18 @@ class LoginView extends GetView<LoginController> {
     const Color backgroundInput = Color(0xFFF5F5F5);
 
     // Font Size
-    double heading = 35.0;
+    double heading = 30.0;
     double textField = 18.0;
     double textButton = 20.0;
 
     // Size
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,// Change this color as needed
+    ));
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -51,7 +57,7 @@ class LoginView extends GetView<LoginController> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 30),
-                        child: AutoSizeText(
+                        child: Text(
                           'Login Here!',
                           style: GoogleFonts.holtwoodOneSc(
                             color: buttonColor,
@@ -88,7 +94,7 @@ class LoginView extends GetView<LoginController> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 16.0, horizontal: 20.0),
+                                      vertical: 12.0, horizontal: 20.0),
                                 ),
                                 validator: (value){
                                   if (value!.isEmpty){
@@ -147,7 +153,7 @@ class LoginView extends GetView<LoginController> {
                                           borderRadius: BorderRadius.circular(10),
                                         ),
                                         contentPadding: const EdgeInsets.symmetric(
-                                            vertical: 16.0, horizontal: 20.0),
+                                            vertical: 12.0, horizontal: 20.0),
                                       ),
                                       validator: (value) {
                                         if (value!.isEmpty) {
@@ -206,35 +212,37 @@ class LoginView extends GetView<LoginController> {
                               ),
 
                               Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.symmetric(vertical: 20),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    FittedBox(
-                                      child: Text(
-                                        'Belum punya akun?',
-                                        style: GoogleFonts.holtwoodOneSc(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      onPressed: (){
-                                        Get.offAllNamed(Routes.REGISTER);
-                                      },
-                                      child: FittedBox(
-                                        child: Text('Register',
-                                            style: GoogleFonts.holtwoodOneSc(
+                                padding: const EdgeInsets.symmetric(vertical: 25),
+                                child: FittedBox(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      FittedBox(
+                                        child: Text(
+                                          'Belum punya akun?',
+                                          style: GoogleFonts.holtwoodOneSc(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600,
-                                              color: buttonColor,
-                                            )),
+                                              color: Colors.black),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      InkWell(
+                                        onTap: ()=> Get.offAllNamed(Routes.REGISTER),
+                                        child: FittedBox(
+                                          child: Text('Register',
+                                              style: GoogleFonts.holtwoodOneSc(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600,
+                                                color: buttonColor,
+                                              )),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               )
                             ],

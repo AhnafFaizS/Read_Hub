@@ -12,6 +12,12 @@ abstract class Routes {
   static const LIBRARY = _Paths.LIBRARY;
   static const SEARCH = _Paths.SEARCH;
   static const PROFILE = _Paths.PROFILE;
+  static const DETAILBOOK = _Paths.DETAILBOOK;
+  static const PEMINJAMAN = _Paths.PEMINJAMAN;
+  static const HISTORYPEMINJAMAN = _Paths.HISTORYPEMINJAMAN;
+  static const BUKTIPEMINJAMAN = _Paths.BUKTIPEMINJAMAN;
+  static const UPDATEPROFILE = _Paths.UPDATEPROFILE;
+  static const BOOKBYKATEGORI = _Paths.BOOKBYKATEGORI;
 }
 
 abstract class _Paths {
@@ -25,4 +31,10 @@ abstract class _Paths {
   static const LIBRARY = '/library';
   static const SEARCH = '/search';
   static const PROFILE = '/profile';
+  static const DETAILBOOK = '/detailbook';
+  static const PEMINJAMAN = '/peminjaman';
+  static const HISTORYPEMINJAMAN = '/historypeminjaman';
+  static const BUKTIPEMINJAMAN = '/buktipeminjaman';
+  static const UPDATEPROFILE = '/updateprofile';
+  static const BOOKBYKATEGORI = '/bookbykategori';
 }

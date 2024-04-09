@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../data/provider/storage_provider.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/splash_controller.dart';
 
@@ -10,12 +11,16 @@ class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
 
-    // Untuk berpindah halaman otomatis setelah 4 detik
-    Future.delayed(
-        const Duration(milliseconds: 4000), ( (){
-      Get.offAllNamed(Routes.ONBOARDING);
-    })
-    );
+    // untuk berpindah halaman otomatis setelah 4 detik
+    Future.delayed(const Duration(milliseconds: 4000), (() {
+      String? status = StorageProvider.read(StorageKey.status);
+      if (status == "logged") {
+        Get.offAllNamed(Routes.DASHBOARD);
+      }else{
+        Get.offAllNamed(Routes.ONBOARDING);
+      }
+    }));
+
     return Scaffold(
         body: Center(
           child: Container(

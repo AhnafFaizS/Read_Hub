@@ -17,7 +17,7 @@ class RegisterView extends GetView<RegisterController> {
     const Color backgroundInput = Color(0xFFF5F5F5);
 
     // Font Size
-    double heading = 35.0;
+    double heading = 25.0;
     double textField = 18.0;
     double textButton = 20.0;
 
@@ -80,7 +80,7 @@ class RegisterView extends GetView<RegisterController> {
                                   color: Colors.black
                               ),
                               contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15.0, horizontal: 20.0),
+                                  vertical: 10.0, horizontal: 20.0),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -95,7 +95,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
 
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
+                          padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.007),
                           child: TextFormField(
                             controller: controller.emailController,
                             style: GoogleFonts.inter(
@@ -114,7 +114,7 @@ class RegisterView extends GetView<RegisterController> {
                                   color: Colors.black
                               ),
                               contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 15.0, horizontal: 20.0),
+                                  vertical: 10.0, horizontal: 20.0),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -133,7 +133,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
 
                         Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.010),
+                            padding: EdgeInsets.symmetric(horizontal: 40, vertical: height * 0.007),
                             child: Obx(()=>
                                 TextFormField(
                                   controller: controller.passwordController,
@@ -166,7 +166,7 @@ class RegisterView extends GetView<RegisterController> {
                                         color: Colors.black
                                     ),
                                     contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 15.0, horizontal: 20.0),
+                                        vertical: 10.0, horizontal: 20.0),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),

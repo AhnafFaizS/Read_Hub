@@ -21,7 +21,7 @@ class DashboardView extends StatelessWidget {
             body: Center(
                 child: IndexedStack(
                   index: controller.tabIndex,
-                  children: [
+                  children: const [
                     HomeView(),
                     LibraryView(),
                     ExploreView(),
@@ -35,11 +35,12 @@ class DashboardView extends StatelessWidget {
               onTap: controller.changeTabIndex,
               currentIndex: controller.tabIndex,
               showSelectedLabels: true,
-              type: BottomNavigationBarType.shifting,
+              unselectedItemColor: const Color(0xFF000000).withOpacity(0.50),
+              type: BottomNavigationBarType.fixed,
               backgroundColor: colorBackground,
               showUnselectedLabels: true,
               unselectedFontSize: 16,
-              selectedFontSize: 16,
+              selectedFontSize: 14,
               selectedLabelStyle: const TextStyle(
                 fontWeight: FontWeight.w700,
               ),
