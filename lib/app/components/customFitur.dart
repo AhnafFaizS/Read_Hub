@@ -90,11 +90,11 @@ class CustomFitur extends StatelessWidget {
               padding: const EdgeInsets.only(top: 5),
               child: AutoSizeText(
                 items.judulBuku,
-                maxLines: 2,
-                maxFontSize: 18,
+                maxLines: 1,
+                maxFontSize: 16,
                 minFontSize: 12,
                 style: GoogleFonts.inter(
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   color: Colors.black,
                   fontWeight: FontWeight.w800,
                 ),
